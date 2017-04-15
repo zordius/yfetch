@@ -8,12 +8,12 @@ I like fetch, so here is a set of use cases and example codes. You can check how
 
 **Core Features**:
 * A set of decorator function to help you to deal with request or response.
-* opts.base : base url
-* opts.query : will be appended into url automatically
-* opts.url : pass into fetch() as 1st param with processed opts.base and opts.query
-* opts.json : auto json parse the ret.body
-* ret.body : auto resolved as String or JSON
-* ret.fetchArgs : the arguments of the fetch call
+* `opts.base` : base url
+* `opts.query` : will be appended into url automatically
+* `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
+* `opts.json` : auto json parse the ret.body
+* `ret.body` : auto resolved as String or JSON
+* `ret.fetchArgs` : the arguments of the fetch call
 
 Install
 -------
