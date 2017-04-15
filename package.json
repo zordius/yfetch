@@ -4,6 +4,7 @@
   "description": "Yet another fetch. A guide for \"How to make fetch more beautiful?\".",
   "main": "index.js",
   "scripts": {
+    "build": "babel src.js -o index.js",
     "test": "NODE_ENV=test nyc jasmine"
   },
   "repository": {
@@ -24,6 +25,7 @@
     "querystring": "^0.2.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-plugin-istanbul": "^4.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
