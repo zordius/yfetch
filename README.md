@@ -13,6 +13,7 @@ I like fetch, so here is a set of use cases and example codes. You can check how
 * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
 * `opts.json` : auto json parse the ret.body
 * `ret.body` : auto resolved as String or JSON
+* `ret.headers` : auto resolved as Object from Header
 * `ret.fetchArgs` : the arguments of the fetch call
 
 Install
@@ -25,3 +26,38 @@ npm install yfetch --save
 You will need these polyfills for [older browsers](http://caniuse.com/#feat=promises) or other environments:
 * [Promise](https://www.npmjs.com/search?q=promise%20polyfill&page=1&ranking=popularity)
 * [fetch](https://www.npmjs.com/search?q=fetch%20polyfill&page=1&ranking=popularity)
+
+Usage
+-----
+
+```javascript
+import yfetch from 'yfetch';
+
+// Same as fetch('https://some.where/test?page=10&size=5')
+yfetch({
+  url: '/test',
+  base: 'https://some.where',
+  query: {
+    page: 10,
+    size: 5
+  }
+}).then((ret) => console.log(ret));
+
+/*
+{
+  url: 'https://some.where/test?page=10&size=5',
+  headers: { ... },
+  status: 200,
+  statusText: 'OK',
+  ok: true,
+  body: '...',
+  size: 1234,
+  fetchArgs: [
+    'https://some.where/test?page=10&size=5'
+  ]
+}
+*/
+```
+
+Why I need to use this?
+-----------------------
