@@ -4,7 +4,8 @@
       "isomorphic-fetch"
     ],
     "include": [
-      "src.js"
+      "src.js",
+      "index.js"
     ],
     "reporter": [
       "lcov",
