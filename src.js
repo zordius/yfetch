@@ -44,7 +44,7 @@ const decorateForContext = fetchOpts => (response = {}) => {
             url, status, statusText, ok, size,
             headers: H,
             body: bodyText,
-            fetchOptions: fetchOpts[1]
+            fetchOptions: fetchOpts
         };
     });
 }
