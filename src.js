@@ -16,7 +16,7 @@ export const decorateFetchOptions = ({query, base = '', url = '', ...opts})  => 
 export const decorateFetchResult = (context = {}) => {
     const {fetchOptions, ...response} = context;
  
-    Iif (fetchOptions.json) {
+    if (fetchOptions.json) {
         response.body = JSON.parse(response.body);
     }
  

@@ -1,27 +1,27 @@
 import * as yFetch from '../src'
 import { decorateFetchOptions, yfetch } from '../src'
-import { enableMockHttp, disableMockHttp, MOCK_URLS, MOCK_BODY } from '../mockHttp'
+import { enableMockHttp, disableMockHttp, MOCK_URLS, MOCK_BODY } from './mockHttp'
 
 describe('yfetch', () => {
-    describe('decorateFetchetchOptions()', () => {
+    describe('decorateFetchOptions()', () => {
         it('should handle opts.base', () => {
-            expect(decorateFetchetchOptions({base: 'pre_'})).toEqual(['pre_', {}]);
+            expect(decorateFetchOptions({base: 'pre_'})).toEqual(['pre_', {}]);
         });
 
         it('should handle opts.url', () => {
-            expect(decorateFetchetchOptions({url: 'test'})).toEqual(['test', {}]);
+            expect(decorateFetchOptions({url: 'test'})).toEqual(['test', {}]);
         });
 
         it('should handle opts.base + opts.url', () => {
-            expect(decorateFetchetchOptions({base: 'pre_', url: 'test'})).toEqual(['pre_test', {}]);
+            expect(decorateFetchOptions({base: 'pre_', url: 'test'})).toEqual(['pre_test', {}]);
         });
 
         it('should handle null opts.query', () => {
-            expect(decorateFetchetchOptions({url: 'test', query: null})).toEqual(['test', {}]);
+            expect(decorateFetchOptions({url: 'test', query: null})).toEqual(['test', {}]);
         });
 
         it('should handle opts.query', () => {
-            expect(decorateFetchetchOptions({url: 'test', query: {foo: 'bar'}})).toEqual(['test?foo=bar', {}]);
+            expect(decorateFetchOptions({url: 'test', query: {foo: 'bar'}})).toEqual(['test?foo=bar', {}]);
         });
     });
 
