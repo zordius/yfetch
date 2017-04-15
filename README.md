@@ -33,7 +33,7 @@ Usage
 ```javascript
 import yfetch from 'yfetch';
 
-// Same as fetch('https://some.where/test?page=10&size=5')
+// Same as fetch('https://some.where/test?page=10&size=5', {})
 yfetch({
   url: '/test',
   base: 'https://some.where',
@@ -53,7 +53,8 @@ yfetch({
   body: '...',
   size: 1234,
   fetchArgs: [
-    'https://some.where/test?page=10&size=5'
+    'https://some.where/test?page=10&size=5',
+    {}
   ]
 }
 */
