@@ -5,7 +5,7 @@ const debugResult = debug('yfetch:result')
  
 // Support simple opts.query and opts.base
 // the output can be inputed into fetch() as arguments
-export const decorateFetchOptions = ({query, base = '', url = '', ...opts})  => {
+export const transformFetchOptions = ({query, base = '', url = '', ...opts})  => {
     const queryString = stringify(query);
     const urlString = base + url + (queryString ? ('?' + queryString)  : '');
  
@@ -13,7 +13,7 @@ export const decorateFetchOptions = ({query, base = '', url = '', ...opts})  => 
 }
  
 // Support opts.json to JSON parse the response.body
-export const decorateFetchResult = (context = {}) => {
+export const transformFetchResult = (context = {}) => {
     const {fetchArgs, ...response} = context;
  
     if (fetchArgs.json) {
@@ -26,7 +26,7 @@ export const decorateFetchResult = (context = {}) => {
 }
  
 // handle response.text() promise, make response simple, keep response.fetchArgs for debug.
-const decorateForContext = fetchOpts => (response = {}) => {
+const transformForContext = fetchOpts => (response = {}) => {
     const {url, status, statusText, headers = [], ok, body, size} = response;
     const H = {};
  
@@ -50,7 +50,7 @@ const decorateForContext = fetchOpts => (response = {}) => {
 }
  
 // keep error.fetchArgs for debug.
-const decorateFetchError = fetchOpts => error => {
+const transformFetchError = fetchOpts => error => {
     error.fetchArgs = fetchOpts;
     throw error;
 }
@@ -60,13 +60,13 @@ export const _fetch = (args) => fetch(...args);
  
 // The main yfetch function
 export const yfetch = (opts = {}) => {
-    const fetchOpts = decorateFetchOptions(opts);
+    const fetchOpts = transformFetchOptions(opts);
  
     // module.exports._fetch allow jasmine to mock it
     return module.exports._fetch(fetchOpts)
-    .then(decorateForContext(fetchOpts))
-    .then(decorateFetchResult)
-    .catch(decorateFetchError(fetchOpts));
+    .then(transformForContext(fetchOpts))
+    .then(transformFetchResult)
+    .catch(transformFetchError(fetchOpts));
 }
  
 // as default

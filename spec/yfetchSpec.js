@@ -1,28 +1,28 @@
 const target = process.env.TESTTARGET || 'src';
 const yFetch = require('../' + target);
-const { decorateFetchOptions, yfetch } = yFetch;
+const { transformFetchOptions, yfetch } = yFetch;
 import { enableMockHttp, disableMockHttp, MOCK_URLS, MOCK_BODY } from './mockHttp';
 
 describe('yfetch [' + target + '.js]', () => {
-    describe('decorateFetchOptions()', () => {
+    describe('transformFetchOptions()', () => {
         it('should handle opts.base', () => {
-            expect(decorateFetchOptions({base: 'pre_'})).toEqual(['pre_', {}]);
+            expect(transformFetchOptions({base: 'pre_'})).toEqual(['pre_', {}]);
         });
 
         it('should handle opts.url', () => {
-            expect(decorateFetchOptions({url: 'test'})).toEqual(['test', {}]);
+            expect(transformFetchOptions({url: 'test'})).toEqual(['test', {}]);
         });
 
         it('should handle opts.base + opts.url', () => {
-            expect(decorateFetchOptions({base: 'pre_', url: 'test'})).toEqual(['pre_test', {}]);
+            expect(transformFetchOptions({base: 'pre_', url: 'test'})).toEqual(['pre_test', {}]);
         });
 
         it('should handle null opts.query', () => {
-            expect(decorateFetchOptions({url: 'test', query: null})).toEqual(['test', {}]);
+            expect(transformFetchOptions({url: 'test', query: null})).toEqual(['test', {}]);
         });
 
         it('should handle opts.query', () => {
-            expect(decorateFetchOptions({url: 'test', query: {foo: 'bar'}})).toEqual(['test?foo=bar', {}]);
+            expect(transformFetchOptions({url: 'test', query: {foo: 'bar'}})).toEqual(['test?foo=bar', {}]);
         });
     });
 
