@@ -58,7 +58,7 @@ describe('yfetch [' + target + '.js]', () => {
                     ok: true,
                     body: MOCK_BODY.OK,
                     size: 0,
-                    fetchOptions: [MOCK_URLS.OK, {}]
+                    fetchArgs: [MOCK_URLS.OK, {}]
                 });
             }));
         });

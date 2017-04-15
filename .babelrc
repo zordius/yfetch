@@ -2,6 +2,13 @@
   "presets": ["es2015"],
   "plugins": ["transform-runtime", "transform-object-rest-spread"],
   env: {
+    build: {
+      presets: [["env", {
+        targets: {
+          node: 4
+        }
+      }]]
+    },
     test: {
       plugins: [
           'istanbul'

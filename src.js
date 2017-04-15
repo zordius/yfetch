@@ -14,18 +14,18 @@ export const decorateFetchOptions = ({query, base = '', url = '', ...opts})  => 
  
 // Support opts.json to JSON parse the response.body
 export const decorateFetchResult = (context = {}) => {
-    const {fetchOptions, ...response} = context;
+    const {fetchArgs, ...response} = context;
  
-    if (fetchOptions.json) {
+    if (fetchArgs.json) {
         response.body = JSON.parse(response.body);
     }
  
     debugResult('url: %s - status: %s - body: %O', response.url, response.status, response.body);
  
-    return {...response, fetchOptions};
+    return {...response, fetchArgs};
 }
  
-// handle response.text() promise, make response simple, keep response.fetchOptions for debug.
+// handle response.text() promise, make response simple, keep response.fetchArgs for debug.
 const decorateForContext = fetchOpts => (response = {}) => {
     const {url, status, statusText, headers = [], ok, body, size} = response;
     const H = {};
@@ -44,14 +44,14 @@ const decorateForContext = fetchOpts => (response = {}) => {
             url, status, statusText, ok, size,
             headers: H,
             body: bodyText,
-            fetchOptions: fetchOpts
+            fetchArgs: fetchOpts
         };
     });
 }
  
-// keep error.fetchOptions for debug.
+// keep error.fetchArgs for debug.
 const decorateFetchError = fetchOpts => error => {
-    error.fetchOptions = fetchOpts;
+    error.fetchArgs = fetchOpts;
     throw error;
 }
  
