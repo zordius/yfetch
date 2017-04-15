@@ -26,7 +26,7 @@ export const decorateFetchResult = (context = {}) => {
 }
  
 // handle response.text() promise, make response simple, keep response.fetchOptions for debug.
-const decorateFetchContext = fetchOpts => (response = {}) => {
+const decorateForContext = fetchOpts => (response = {}) => {
     const {url, status, statusText, headers = [], ok, body, size} = response;
     const H = {};
  
@@ -38,7 +38,7 @@ const decorateFetchContext = fetchOpts => (response = {}) => {
  
     return job
     .then((bodyText) => {
-        debugRaw('url: %s - status: %s - size: %s - body: %s', url, status, size, bodyText);
+        debugRaw('url: %s - status: %s - size: %s - header: %o - body: %s', url, status, size, H, bodyText);
  
         return {
             url, status, statusText, ok, size,
@@ -64,7 +64,7 @@ export const yfetch = (opts = {}) => {
  
     // module.exports._fetch allow jasmine to mock it
     return module.exports._fetch(fetchOpts)
-    .then(decorateFetchContext(fetchOpts))
+    .then(decorateForContext(fetchOpts))
     .then(decorateFetchResult)
     .catch(decorateFetchError(fetchOpts));
 }
