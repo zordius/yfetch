@@ -5,16 +5,21 @@ const debugRaw = debug('yfetch:raw');
 const debugResult = debug('yfetch:result');
 const debugError = debug('yfetch:error');
 
-export class YfetchError extends Error {
-}
+export class YfetchError extends Error {}
+
+export const JSON_HEADER = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+};
 
 // Support simple opts.query , opts.base and opts.url logic
 // return fetch() arguments
-export const transformFetchOptions = ({ query, base = '', url = '', ...opts }) => {
+export const transformFetchOptions = ({ query, headers, base = '', url = '', ...opts }) => {
   const queryString = stringify(query);
   const urlString = base + url + (queryString ? `?${queryString}` : '');
+  let H = opts.json ? JSON_HEADER : {};
 
-  return [urlString, opts];
+  return [urlString, { headers: { ...H, ...headers }, ...opts }];
 };
 
 // Support opts.json and opts.error , send debug yfetch:result
