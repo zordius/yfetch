@@ -4,7 +4,7 @@ Yet another fetch. A guide for "How to make fetch more beautiful?".
 
 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) is a new API based on [Promise](https://developers.google.com/web/fundamentals/getting-started/primers/promises), it help you to prevent callback hell.
 
-I like fetch, so here is a set of use cases and example codes. You can check how to use yfetch and know it enhanced fetch.
+I like fetch, so here is a set of use cases and example codes to know how to use yfetch or make your fetch coding style better.
 
 **Core Features**:
 * A set of decorator function to help you to deal with request or response.
