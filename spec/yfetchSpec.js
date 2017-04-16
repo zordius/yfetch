@@ -72,10 +72,18 @@ describe('yfetch [' + target + '.js]', () => {
                 expect(error.fetchArgs).toEqual([MOCK_URLS.OK_DELAY2, {timeout: 100}]);
             }));
 
+            // json
+            it('should response text when no opts.json', () => yfetch({url: MOCK_URLS.OK_JSON}).then((response) => {
+                expect(response.body).toEqual(JSON.stringify(MOCK_BODY.OK_JSON));
+            }));
+            it('should handle JSON when opts.json is true', () => yfetch({url: MOCK_URLS.OK_JSON, json: true}).then((response) => {
+                expect(response.body).toEqual(MOCK_BODY.OK_JSON);
+            }));
+
+            // error
             it('should ignore bad opts.error', () => yfetch({url: MOCK_URLS.OK, error: 1}));
             it('should ignore empty opts.error', () => yfetch({url: MOCK_URLS.OK, error: []}));
             it('should success when opts.error not matched', () => yfetch({url: MOCK_URLS.OK, error: [404, 500]}));
-
             it('should threat code 200 as error', (done) => yfetch({url: MOCK_URLS.OK, error: [100, 200, 300]}).then(fail, done));
         });
     });
