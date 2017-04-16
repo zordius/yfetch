@@ -170,3 +170,22 @@ yfetch({url, json: true, ...opts})
   </td>
  </tr>
 </table>
+
+**Conclusion**
+
+You always need a wrapped version of fetch for debugging and response handling, you can just use yfetch, or do it your own. If you do not use yfetch, we still encourage you to use ES6 coding style to make your fetch more beautiful. In simple words, yfetch is:
+
+```javascript
+const yfetch = (opts = {}) => {
+    const fetchArgs = transformFetchOptions(opts);
+    return fetch(...fetchArgs)
+    .then(transformForContext(fetchArgs))
+    .then(transformFetchResult)
+    .catch(transformFetchError(fetchArgs));
+}
+```
+
+You can build your own `transformFetchOptions`, `transformForContext`, `transformFetchResult` and `transformFetchError` , or just enjoy yfetch and reuse the exported yfetch transform functions.
+
+Transform functions
+-------------------

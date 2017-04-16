@@ -27,7 +27,7 @@ export const transformFetchResult = (context = {}) => {
 }
  
 // handle response.text() promise, make response simple, keep response.fetchArgs for debug.
-const transformForContext = fetchOpts => (response = {}) => {
+const transformForContext = fetchArgs => (response = {}) => {
     const {url, status, statusText, headers = [], ok, body, size} = response;
     const H = {};
  
@@ -45,15 +45,15 @@ const transformForContext = fetchOpts => (response = {}) => {
             url, status, statusText, ok, size,
             headers: H,
             body: bodyText,
-            fetchArgs: fetchOpts
+            fetchArgs: fetchArgs
         };
     });
 }
  
 // keep error.fetchArgs for debug.
-const transformFetchError = (fetchOpts, response) => error => {
-    debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchOpts[0], response.status, response.size, response.body, error);
-    error.fetchArgs = fetchOpts;
+const transformFetchError = (fetchArgs, response) => error => {
+    debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchArgs[0], response.status, response.size, response.body, error);
+    error.fetchArgs = fetchArgs;
     error.response = response;
     throw error;
 }
@@ -63,15 +63,15 @@ export const _fetch = (args) => fetch(...args);
  
 // The main yfetch function
 export const yfetch = (opts = {}) => {
-    const fetchOpts = transformFetchOptions(opts);
+    const fetchArgs = transformFetchOptions(opts);
     let R = {};
  
     // module.exports._fetch allow jasmine to mock it
-    return module.exports._fetch(fetchOpts)
-    .then(transformForContext(fetchOpts))
+    return module.exports._fetch(fetchArgs)
+    .then(transformForContext(fetchArgs))
     .then((response) => Object.assign(R, response))
     .then(transformFetchResult)
-    .catch(transformFetchError(fetchOpts, R));
+    .catch(transformFetchError(fetchArgs, R));
 }
  
 // as default
