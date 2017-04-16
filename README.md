@@ -139,7 +139,7 @@ yfetch({url, json: true, ...opts})
   <td valign="top">
 
 ```javascript
-// ES6 function creator trick
+// ES6 arrow function to return the promise
 myfetch = (url, opts) => fetch(url, opts)
 .then((response) => response.body.json())
 .then (
