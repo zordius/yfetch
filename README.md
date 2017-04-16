@@ -189,3 +189,15 @@ You can build your own `transformFetchOptions`, `transformForContext`, `transfor
 
 Transform functions
 -------------------
+**transformFetchOptions**
+
+Deal with opts.base, opts.url and opts.query
+
+```javascript
+import { transformFetchOptions } from 'yfetch'
+
+transformFetchOptions({base: 'pre_'}))      // ['pre_', {}]
+transformFetchOptions({url: 'test'}))       // ['test', {}]
+transformFetchOptions({base: 'pre_', url: 'test'}))     // ['pre_test', {}]
+transformFetchOptions({url: 'test', query: {foo: 'bar'}}))      // ['test?foo=bar', {}]
+```
