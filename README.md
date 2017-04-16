@@ -159,8 +159,11 @@ yfetch({url, json: true, ...opts})
 resp => console.log('success', resp.body, resp.fetchArgs),
 error => console.log('error', error, error.fetchArgs)
 );
-// NOTE: yfetch adopt https://www.npmjs.com/package/debug
-//       so you can just export DEBUG=yfetch:* for this
+
+// yfetch adopt https://www.npmjs.com/package/debug
+// so you can just export DEBUG=yfetch:* then
+// just do yfetch without touch your code
+yfetch({url, json: true, ...opts})
 ```
 
   </td>
