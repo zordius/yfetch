@@ -189,7 +189,7 @@ You can build your own `transformFetchOptions`, `transformForContext`, `transfor
 
 Transform functions
 -------------------
-**transformFetchOptions**
+**transformFetchOptions(opts)**
 
 Deal with opts.base, opts.url and opts.query
 
