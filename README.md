@@ -147,6 +147,7 @@ body => console.log('success', body, url, opts),
 error => console.log('error', error, url, opts)
 );
 
+// always use the wrapped version
 myfetch(url, opts);
 ```
 
