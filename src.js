@@ -4,8 +4,8 @@ const debugRaw = debug('yfetch:raw')
 const debugResult = debug('yfetch:result')
 const debugError = debug('yfetch:error')
  
-// Support simple opts.query and opts.base
-// the output can be inputed into fetch() as arguments
+// Support simple opts.query , opts.base and opts.url logic
+// return fetch() arguments
 export const transformFetchOptions = ({query, base = '', url = '', ...opts})  => {
     const queryString = stringify(query);
     const urlString = base + url + (queryString ? ('?' + queryString)  : '');
