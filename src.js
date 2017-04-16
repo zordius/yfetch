@@ -17,11 +17,15 @@ export const transformFetchOptions = ({query, base = '', url = '', ...opts})  =>
 export const transformFetchResult = (context = {}) => {
     const {fetchArgs, ...response} = context;
  
-    if (fetchArgs.json) {
+    if (fetchArgs[1].json) {
         response.body = JSON.parse(response.body);
     }
  
     debugResult('url: %s - status: %s - body: %O', response.url, response.status, response.body);
+
+    if (fetchArgs[1].error && fetchArgs[1].error.indexOf && ~fetchArgs[1].error.indexOf(response.status)) {
+        throw new yfetchError(`Response Code ${response.status} means Error (includes: ${fetchArgs[1].error.join(',')})`);
+    }
  
     return {...response, fetchArgs};
 }
