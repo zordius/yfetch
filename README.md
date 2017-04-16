@@ -185,7 +185,7 @@ const yfetch = (opts = {}) => {
 }
 ```
 
-You can build your own `transformFetchOptions`, `transformForContext`, `transformFetchResult` and `transformFetchError` , or just enjoy yfetch and reuse the exported yfetch transform functions.
+You can build your own `transformFetchOptions`, `transformForContext`, `transformFetchResult` and `transformFetchError` , or just enjoy yfetch and reuse the exported yfetch transform functions. Review [yfetch](src.js) , then make your decision.
 
 Transform functions
 -------------------
