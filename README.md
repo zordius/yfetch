@@ -136,8 +136,10 @@ yfetch({url, json: true, ...opts})
 ```javascript
 myfetch = (url, opts) => fetch(url, {opts})
 .then((response) => response.body.json())
-.then (body => console.log('success', body, url, opts)
-, error => console.log('error', error, url, opts));
+.then (
+body => console.log('success', body, url, opts),
+error => console.log('error', error, url, opts)
+);
 ```
 
   </td>
@@ -145,8 +147,10 @@ myfetch = (url, opts) => fetch(url, {opts})
 
 ```javascript
 yfetch({url, json: true, ...opts})
-.then(response => console.log('success', response.body, response.fetchArgs)
-error => console.log('error', error, error.fetchArgs));
+.then(
+resp => console.log('success', resp.body, resp.fetchArgs),
+error => console.log('error', error, error.fetchArgs)
+);
 // NOTE: yfetch already adopt debug
 //       so you can just export DEBUG=yfetch:* for this
 ```
