@@ -68,15 +68,16 @@ Check these daily use cases, you may need yfetch, or coding in the way just like
 **Get Response body**
 <table>
  <tr>
-  <th>without yfetch</th><th>with yfetch</th>
+  <th width="50%">without yfetch</th><th width="50%">with yfetch</th>
  </tr>
  <tr>
   <td valign="top">
 
 ```javascript
-fetch(url, {opts}).then((response) => response.body.text()
-}).then (body => {
-    // body
+fetch(url, {opts})
+.then((response) => response.body.text())
+.then (body => {
+    // body, but response dropped
 });
 ```
 
@@ -86,7 +87,7 @@ fetch(url, {opts}).then((response) => response.body.text()
 ```javascript
 yfetch({url, ...opts})
 .then(response => {
-    // response.bdoy
+    // response.body
 });
 ```
 
