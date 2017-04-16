@@ -51,7 +51,7 @@ const transformForContext = fetchOpts => (response = {}) => {
 }
  
 // keep error.fetchArgs for debug.
-const transformFetchError = (fetchOpts, response = {}) => error => {
+const transformFetchError = (fetchOpts, response) => error => {
     debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchOpts[0], response.status, response.size, response.body, error);
     error.fetchArgs = fetchOpts;
     error.response = response;
@@ -64,12 +64,14 @@ export const _fetch = (args) => fetch(...args);
 // The main yfetch function
 export const yfetch = (opts = {}) => {
     const fetchOpts = transformFetchOptions(opts);
+    let R = {};
  
     // module.exports._fetch allow jasmine to mock it
     return module.exports._fetch(fetchOpts)
     .then(transformForContext(fetchOpts))
+    .then((response) => Object.assign(R, response))
     .then(transformFetchResult)
-    .catch(transformFetchError(fetchOpts));
+    .catch(transformFetchError(fetchOpts, R));
 }
  
 // as default
