@@ -13,7 +13,7 @@ export const transformFetchOptions = ({query, base = '', url = '', ...opts})  =>
     return [urlString, opts];
 }
  
-// Support opts.json to JSON parse the response.body
+// Support opts.json and opts.error , send debug yfetch:result
 export const transformFetchResult = (context = {}) => {
     const {fetchArgs, ...response} = context;
  
@@ -30,7 +30,7 @@ export const transformFetchResult = (context = {}) => {
     return {...response, fetchArgs};
 }
  
-// handle response.text() promise, make response simple, keep response.fetchArgs for debug.
+// handle response.text() promise, make response simple, keep response.fetchArgs. send debug yfetch:raw
 const transformForContext = fetchArgs => (response = {}) => {
     const {url, status, statusText, headers = [], ok, body, size} = response;
     const H = {};
@@ -54,7 +54,7 @@ const transformForContext = fetchArgs => (response = {}) => {
     });
 }
  
-// keep error.fetchArgs for debug.
+// keep error.fetchArgs and error.response , send debug yfetch:error
 const transformFetchError = (fetchArgs, response) => error => {
     debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchArgs[0], response.status, response.size, response.body, error);
     error.fetchArgs = fetchArgs;
