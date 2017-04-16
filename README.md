@@ -13,6 +13,7 @@ I like fetch, so here is a set of use cases and example codes to know how to use
   * `opts.query` : will be appended into url automatically
   * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
   * `opts.json` : auto json parse the ret.body
+  * `opts.error` : rejects when the response http code be included in opts.error array
   * `response.body` : auto resolved as String or JSON
   * `response.headers` : auto transformed as Object from Header
   * `response.fetchArgs` : the arguments of the fetch call
@@ -200,4 +201,13 @@ transformFetchOptions({base: 'pre_'}))      // ['pre_', {}]
 transformFetchOptions({url: 'test'}))       // ['test', {}]
 transformFetchOptions({base: 'pre_', url: 'test'}))     // ['pre_test', {}]
 transformFetchOptions({url: 'test', query: {foo: 'bar'}}))      // ['test?foo=bar', {}]
+```
+
+**transformFetchResult(response)**
+
+The response must contains .fetchArgs . Deal with opts.json and opts.error.
+
+```javascript
+transformFetchOptions({body, fetchArgs: [url, {json: true}}])     // will JSON.parse(body)
+transformFetchOptions({code: 404, fetchArgs: [url, {error: [404, 500]}}])   // will throw
 ```
