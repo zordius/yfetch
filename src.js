@@ -17,7 +17,7 @@ export const JSON_HEADER = {
 export const transformFetchOptions = ({ query, headers, base = '', url = '', ...opts }) => {
   const queryString = stringify(query);
   const urlString = base + url + (queryString ? `?${queryString}` : '');
-  let H = opts.json ? JSON_HEADER : {};
+  const H = opts.json ? JSON_HEADER : {};
 
   return [urlString, { headers: { ...H, ...headers }, ...opts }];
 };
