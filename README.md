@@ -8,13 +8,17 @@ I like fetch, so here is a set of use cases and example codes. You can check how
 
 **Core Features**:
 * A set of decorator function to help you to deal with request or response.
-* `opts.base` : base url
-* `opts.query` : will be appended into url automatically
-* `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
-* `opts.json` : auto json parse the ret.body
-* `ret.body` : auto resolved as String or JSON
-* `ret.headers` : auto resolved as Object from Header
-* `ret.fetchArgs` : the arguments of the fetch call
+* Accept same options just like fetch with some extensions:
+  * `opts.base` : base url
+  * `opts.query` : will be appended into url automatically
+  * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
+  * `opts.json` : auto json parse the ret.body
+  * `ret.body` : auto resolved as String or JSON
+  * `ret.headers` : auto resolved as Object from Header
+  * `ret.fetchArgs` : the arguments of the fetch call
+* [debug](https://www.npmjs.com/package/debug) , export DEBUG=... to show debug log:
+  * `yfetch:raw` : show url, response size, status, headers, raw
+  * `yfetch:result` : show url, response status, body as text or JSON
 
 Install
 -------
