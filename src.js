@@ -63,15 +63,15 @@ const transformFetchError = (fetchArgs, response) => error => {
 }
  
 // Export this for unit testing and mock
-export const _fetch = (args) => fetch(...args);
+export const executeFetch = (args) => fetch(...args);
  
 // The main yfetch function
 export const yfetch = (opts = {}) => {
     const fetchArgs = transformFetchOptions(opts);
     let R = {};
  
-    // module.exports._fetch allow jasmine to mock it
-    return module.exports._fetch(fetchArgs)
+    // module.exports.executeFetch allow jasmine to mock it
+    return module.exports.executeFetch(fetchArgs)
     .then(transformForContext(fetchArgs))
     .then((response) => Object.assign(R, response))
     .then(transformFetchResult)
