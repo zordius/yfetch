@@ -62,3 +62,28 @@ yfetch({
 
 Why I need to use this?
 -----------------------
+
+Check these daily use cases, you may need yfetch, or coding in the way just like yfetch.
+
+**Get Response body**
+<table>
+ <tr>
+  <th>without yfetch</th><th>with yfetch</th>
+  <td valign="top">
+```javascript
+fetch(url, {opts}).then((response) => response.body.text()
+}).then (body => {
+    // body
+});
+```
+  </td>
+  <td valign="top">
+```javascript
+yfetch({url, ...opts})
+.then(response => {
+    // response.bdoy
+});
+```
+  </td>
+ </tr>
+</table>
