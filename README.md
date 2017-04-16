@@ -13,9 +13,9 @@ I like fetch, so here is a set of use cases and example codes. You can check how
   * `opts.query` : will be appended into url automatically
   * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
   * `opts.json` : auto json parse the ret.body
-  * `ret.body` : auto resolved as String or JSON
-  * `ret.headers` : auto resolved as Object from Header
-  * `ret.fetchArgs` : the arguments of the fetch call
+  * `response.body` : auto resolved as String or JSON
+  * `response.headers` : auto transformed as Object from Header
+  * `response.fetchArgs` : the arguments of the fetch call
 * [debug](https://www.npmjs.com/package/debug) , export DEBUG=... to show debug log:
   * `yfetch:raw` : show url, response size, status, headers, raw
   * `yfetch:result` : show url, response status, body as text or JSON
