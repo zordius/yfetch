@@ -154,15 +154,15 @@ myfetch(url, opts);
   <td valign="top">
 
 ```javascript
+// debug in your code....deprecated
 yfetch({url, json: true, ...opts})
 .then(
 resp => console.log('success', resp.body, resp.fetchArgs),
 error => console.log('error', error, error.fetchArgs)
 );
 
-// yfetch adopt https://www.npmjs.com/package/debug
-// so you can just export DEBUG=yfetch:* then
-// just do yfetch without touch your code
+// BETTER: export DEBUG=yfetch:* then
+// just do yfetch without changing your code
 yfetch({url, json: true, ...opts})
 ```
 
