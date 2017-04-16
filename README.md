@@ -64,8 +64,8 @@ yfetch({
 */
 ```
 
-Why I need this?
-----------------
+Why I need yfetch?
+------------------
 
 Check these daily use cases, you may use yfetch to make things simple, or just do the same task with more code.
 
