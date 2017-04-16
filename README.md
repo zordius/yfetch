@@ -60,8 +60,8 @@ yfetch({
 */
 ```
 
-Why I need to use this?
------------------------
+Why I need this?
+----------------
 
 Check these daily use cases, you may need yfetch, or coding in the way just like yfetch.
 
@@ -69,6 +69,8 @@ Check these daily use cases, you may need yfetch, or coding in the way just like
 <table>
  <tr>
   <th>without yfetch</th><th>with yfetch</th>
+ </tr>
+ <tr>
   <td valign="top">
 ```javascript
 fetch(url, {opts}).then((response) => response.body.text()
