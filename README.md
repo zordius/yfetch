@@ -94,3 +94,33 @@ yfetch({url, ...opts})
   </td>
  </tr>
 </table>
+
+**Get Response as JSON**
+<table>
+ <tr>
+  <th width="50%">without yfetch</th><th width="50%">with yfetch</th>
+ </tr>
+ <tr>
+  <td valign="top">
+
+```javascript
+fetch(url, {opts})
+.then((response) => response.body.json())
+.then (body => {
+    // body as JSON, but response dropped
+});
+```
+
+  </td>
+  <td valign="top">
+
+```javascript
+yfetch({url, json: true, ...opts})
+.then(response => {
+    // response.body as JSON
+});
+```
+
+  </td>
+ </tr>
+</table>
