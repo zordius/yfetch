@@ -2,6 +2,7 @@ import { stringify } from 'querystring'
 import debug from 'debug'
 const debugRaw = debug('yfetch:raw')
 const debugResult = debug('yfetch:result')
+const debugError = debug('yfetch:error')
  
 // Support simple opts.query and opts.base
 // the output can be inputed into fetch() as arguments
@@ -50,8 +51,10 @@ const transformForContext = fetchOpts => (response = {}) => {
 }
  
 // keep error.fetchArgs for debug.
-const transformFetchError = fetchOpts => error => {
+const transformFetchError = (fetchOpts, response = {}) => error => {
+    debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchOpts[0], response.status, response.size, response.body, error);
     error.fetchArgs = fetchOpts;
+    error.response = response;
     throw error;
 }
  
