@@ -67,7 +67,7 @@ yfetch({
 Why I need this?
 ----------------
 
-Check these daily use cases, you may need yfetch, or coding in the way just like yfetch.
+Check these daily use cases, you may use yfetch to make things simple, or just do the same task with more code.
 
 **Get Response body**
 <table>
