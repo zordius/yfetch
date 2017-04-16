@@ -19,6 +19,7 @@ I like fetch, so here is a set of use cases and example codes. You can check how
 * [debug](https://www.npmjs.com/package/debug) , export DEBUG=... to show debug log:
   * `yfetch:raw` : show url, response size, status, headers, raw
   * `yfetch:result` : show url, response status, body as text or JSON
+  * `yfetch:error` : show url, response status, body as text or JSON, error
 
 Install
 -------
