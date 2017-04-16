@@ -138,12 +138,15 @@ yfetch({url, json: true, ...opts})
   <td valign="top">
 
 ```javascript
-myfetch = (url, opts) => fetch(url, {opts})
+// ES6 function creator trick
+myfetch = (url, opts) => fetch(url, opts)
 .then((response) => response.body.json())
 .then (
 body => console.log('success', body, url, opts),
 error => console.log('error', error, url, opts)
 );
+
+myfetch(url, opts);
 ```
 
   </td>
