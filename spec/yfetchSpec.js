@@ -49,6 +49,11 @@ describe('yfetch [' + target + '.js]', () => {
 
             it('should failed', (done) => yfetch({url: '_should_error_'}).then(done.fail, done));
 
+            it('should failed with context', () => yfetch({url: '_should_error_'}).then(fail, (error) => {
+                expect(error.response).toEqual({});
+                expect(error.fetchArgs).toEqual(['_should_error_', {}]);
+            }));
+
             it('should receive full context of fetch', () => yfetch({url: MOCK_URLS.OK}).then((context) => {
                 expect(context).toEqual({
                     url: MOCK_URLS.OK,
@@ -60,6 +65,11 @@ describe('yfetch [' + target + '.js]', () => {
                     size: 0,
                     fetchArgs: [MOCK_URLS.OK, {}]
                 });
+            }));
+
+            it('should support timeout', () => yfetch({url: MOCK_URLS.OK_DELAY2, timeout: 100}).then(fail, (error) => {
+                expect(error.response).toEqual({});
+                expect(error.fetchArgs).toEqual([MOCK_URLS.OK_DELAY2, {timeout: 100}]);
             }));
         });
     });
