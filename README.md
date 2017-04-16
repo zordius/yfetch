@@ -7,7 +7,7 @@ Yet another fetch. A guide for "How to make fetch more beautiful?".
 I like fetch, so here is a set of use cases and example codes to know how to use yfetch or make your fetch coding style better.
 
 **Core Features**:
-* A set of decorator function to help you to deal with request or response.
+* A set of transform functions to help you to deal with fetch request or response.
 * Accept same options just like fetch with some extensions:
   * `opts.base` : base url
   * `opts.query` : will be appended into url automatically
