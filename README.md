@@ -82,7 +82,7 @@ Check these daily use cases, you may use yfetch to make things simple, or just d
   <td valign="top">
 
 ```javascript
-fetch(url, {opts})
+fetch(url, opts)
 .then((response) => response.body.text())
 .then (body => {
     // body, but response dropped
@@ -93,7 +93,7 @@ fetch(url, {opts})
   <td valign="top">
 
 ```javascript
-yfetch({url, ...opts})
+yfetch({ url, ...opts })
 .then(response => {
     // response.body
 });
@@ -112,7 +112,7 @@ yfetch({url, ...opts})
   <td valign="top">
 
 ```javascript
-fetch(url, {opts})
+fetch(url, { headers: { Accept: 'application/json' }, ...opts })
 .then((response) => response.body.json())
 .then (body => {
     // body as JSON, but response dropped
@@ -123,7 +123,7 @@ fetch(url, {opts})
   <td valign="top">
 
 ```javascript
-yfetch({url, json: true, ...opts})
+yfetch({ url, json: true, ...opts })
 .then(response => {
     // response.body as JSON
 });
@@ -159,7 +159,7 @@ myfetch(url, opts);
 
 ```javascript
 // debug in your code....deprecated
-yfetch({url, json: true, ...opts})
+yfetch({ url, ...opts })
 .then(
 resp => console.log('success', resp.body, resp.fetchArgs),
 error => console.log('error', error, error.fetchArgs)
