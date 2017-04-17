@@ -197,10 +197,12 @@ Deal with opts.base, opts.url and opts.query
 ```javascript
 import { transformFetchOptions } from 'yfetch'
 
-transformFetchOptions({base: 'pre_'}))      // ['pre_', {}]
-transformFetchOptions({url: 'test'}))       // ['test', {}]
-transformFetchOptions({base: 'pre_', url: 'test'}))     // ['pre_test', {}]
-transformFetchOptions({url: 'test', query: {foo: 'bar'}}))      // ['test?foo=bar', {}]
+transformFetchOptions({}))          // ['', {}]
+transformFetchOptions({ base: 'pre_' }))    // ['pre_', {}]
+transformFetchOptions({ url: 'test' }))     // ['test', {}]
+transformFetchOptions({ base: 'pre_', url: 'test' }))   // ['pre_test', {}]
+transformFetchOptions({ url: 'test', query: { foo: 'bar' } }))  // ['test?foo=bar', {}]
+transformFetchOptions({ json: true }))      // ['', { json: true, headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' } }]
 ```
 
 **transformFetchResult(response)**
