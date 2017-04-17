@@ -12,7 +12,7 @@ I like fetch, so here is a set of use cases and example codes to know how to use
   * `opts.base` : base url
   * `opts.query` : will be appended into url automatically
   * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
-  * `opts.json` : auto json parse the ret.body
+  * `opts.json` : auto json headers in request, then json parse the response.body
   * `opts.error` : rejects when the response http code be included in opts.error array
   * `response.body` : auto resolved as String or JSON
   * `response.headers` : auto transformed as Object from Header
