@@ -13,6 +13,7 @@ export const JSON_HEADER = {
 };
 
 // Support simple opts.query , opts.base and opts.url logic
+// Support opts.json headers
 // return fetch() arguments
 export const transformFetchOptions = ({ query, headers, base = '', url = '', ...opts }) => {
   const queryString = stringify(query);
@@ -41,7 +42,7 @@ export const transformFetchResult = (context = {}) => {
   return { ...response, fetchArgs };
 };
 
-// handle response.text() promise, make response simple, keep response.fetchArgs.
+// handle response.text() promise, make response simple, keep response.fetchArgs
 // send debug yfetch:raw
 const transformForContext = fetchArgs => (response = {}) => {
   const { url, status, statusText, headers = [], ok, size } = response;
