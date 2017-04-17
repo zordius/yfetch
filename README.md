@@ -2,6 +2,8 @@ yfetch
 ======
 Yet another fetch. A guide for "How to make fetch more beautiful?".
 
+[![Build Status](https://travis-ci.org/zordius/yfetch.svg?branch=master)](https://travis-ci.org/zordius/yfetch)
+
 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) is a new API based on [Promise](https://developers.google.com/web/fundamentals/getting-started/primers/promises), it help you to prevent callback hell.
 
 I like fetch, so here is a set of use cases and example codes to know how to use yfetch or make your fetch coding style better.
