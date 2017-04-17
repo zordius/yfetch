@@ -58,10 +58,10 @@ yfetch({
   status: 200,
   statusText: 'OK',
   ok: true,
-  body: '...',
+  body: '...',                                  // yfetch transformed text or JSON
   size: 1234,
-  fetchArgs: [
-    'https://some.where/test?page=10&size=5',
+  fetchArgs: [                                  // yfetch exntends attribute,
+    'https://some.where/test?page=10&size=5',   // original fetch arguments stores here
     {}
   ]
 }
