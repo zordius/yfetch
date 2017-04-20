@@ -85,12 +85,12 @@ export const executeFetch = args => fetch(...args);
 // The main yfetch function
 export const yfetch = (opts = {}) => {
   const fetchArgs = transformFetchOptions(opts);
-  const R = {};
+  let R = {};
 
   // module.exports.executeFetch allow jasmine to mock it
   return module.exports.executeFetch(fetchArgs)
   .then(transformForContext(fetchArgs))
-  .then(response => Object.assign(R, response))
+  .then(response => (R = response))
   .then(transformFetchResult)
   .catch(transformFetchError(fetchArgs, R));
 };
