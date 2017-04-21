@@ -4,8 +4,8 @@
 .nyc_output/
 .nycrc
 .travis.yml
-src.js
-spec/
 coverage/
 coverage2/
+src.js
+spec/
 travis.sh
