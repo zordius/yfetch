@@ -31,9 +31,9 @@ Install
 npm install yfetch --save
 ```
 
-You will need these polyfills for [older browsers](http://caniuse.com/#feat=promises) or other environments:
-* [Promise](https://www.npmjs.com/search?q=promise%20polyfill&page=1&ranking=popularity)
-* [fetch](https://www.npmjs.com/search?q=fetch%20polyfill&page=1&ranking=popularity)
+You will need these polyfills for older browsers or other environments:
+* [Promise](https://www.npmjs.com/search?q=promise%20polyfill&page=1&ranking=popularity) : [browser support](http://caniuse.com/#feat=promises)
+* [fetch](https://www.npmjs.com/search?q=fetch%20polyfill&page=1&ranking=popularity) : [browser support](http://caniuse.com/#feat=fetch)
 
 Usage
 -----
