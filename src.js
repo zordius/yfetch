@@ -23,16 +23,19 @@ export const transformFetchOptions = ({ query, headers, base = '', url = '', ...
   return [urlString, { headers: { ...H, ...headers }, ...opts }];
 };
 
-// Support opts.json and opts.error , send debug yfetch:result
-export const transformFetchResult = (context = {}) => {
-  const { fetchArgs, ...response } = context;
-
+// Support opts.json, send debug yfetch:result
+export const transformFetchResult = ({ fetchArgs, ...response }) => {
   if (fetchArgs[1].json) {
     response.body = JSON.parse(response.body);
   }
 
   debugResult('url: %s - status: %s - body: %O', response.url, response.status, response.body);
 
+  return { ...response, fetchArgs };
+};
+
+// Support opts.error
+export const transformFetchStatusError = ({ fetchArgs, ...response }) => {
   if (fetchArgs[1].error
       && fetchArgs[1].error.indexOf
       && fetchArgs[1].error.indexOf(response.status) > 0) {
@@ -90,8 +93,9 @@ export const yfetch = (opts = {}) => {
   // module.exports.executeFetch allow jasmine to mock it
   return module.exports.executeFetch(fetchArgs)
   .then(transformForContext(fetchArgs))
-  .then(response => (R = response))
   .then(transformFetchResult)
+  .then(response => (R = response))
+  .then(transformFetchStatusError)
   .catch(transformFetchError(fetchArgs, R));
 };
 
