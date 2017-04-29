@@ -93,7 +93,23 @@ describe(`yfetch [${target}.js]`, () => {
       it('should ignore bad opts.error', () => yfetch({ url: MOCK_URLS.OK, error: 1 }));
       it('should ignore empty opts.error', () => yfetch({ url: MOCK_URLS.OK, error: [] }));
       it('should success when opts.error not matched', () => yfetch({ url: MOCK_URLS.OK, error: [404, 500] }));
-      it('should threat code 200 as error', done => yfetch({ url: MOCK_URLS.OK, error: [100, 200, 300] }).then(fail, done));
+      it('should threat code 200 as error', done => yfetch({ url: MOCK_URLS.OK, error: [100, 200, 300] }).then(fail, (err) => {
+        expect(err.message).toEqual('Response Code 200 means Error (includes: 100,200,300)');
+        expect(err.response).toEqual({
+          url: 'http://test/ok',
+          status: 200,
+          statusText: 'OK',
+          ok: true,
+          size: 0,
+          body: 'Yes, OK',
+          headers: {},
+          fetchArgs: ['http://test/ok', {
+            headers: {},
+            error: [100, 200, 300],
+          }],
+        });
+        done();
+      }));
     });
   });
 });

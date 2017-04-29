@@ -75,7 +75,9 @@ const transformForContext = fetchArgs => (response = {}) => {
 };
 
 // keep error.fetchArgs and error.response , send debug yfetch:error
-const transformFetchError = (fetchArgs, { response = {} }) => (error) => {
+// const transformFetchError = (fetchArgs, { response = {} }) => (error) => {
+const transformFetchError = (fetchArgs, R) => (error) => {
+  const response = R.response || {};
   debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchArgs[0], response.status, response.size, response.body, error);
   error.fetchArgs = fetchArgs;
   error.response = response;
