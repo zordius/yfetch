@@ -75,7 +75,7 @@ const transformForContext = fetchArgs => (response = {}) => {
 };
 
 // keep error.fetchArgs and error.response , send debug yfetch:error
-const transformFetchError = (fetchArgs, response) => (error) => {
+const transformFetchError = (fetchArgs, { response = {} }) => (error) => {
   debugError('url: %s - status: %s - size: %s - body: %s - %O', fetchArgs[0], response.status, response.size, response.body, error);
   error.fetchArgs = fetchArgs;
   error.response = response;
@@ -88,13 +88,19 @@ export const executeFetch = args => fetch(...args);
 // The main yfetch function
 export const yfetch = (opts = {}) => {
   const fetchArgs = transformFetchOptions(opts);
-  let R = {};
+  const R = {};
+
+  const storeResponse = (response) => {
+    R.response = response;
+    return response;
+  };
 
   // module.exports.executeFetch allow jasmine to mock it
   return module.exports.executeFetch(fetchArgs)
   .then(transformForContext(fetchArgs))
+  .then(storeResponse)
   .then(transformFetchResult)
-  .then(response => (R = response))
+  .then(storeResponse)
   .then(transformFetchStatusError)
   .catch(transformFetchError(fetchArgs, R));
 };
