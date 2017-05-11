@@ -204,7 +204,13 @@ transformFetchOptions({ base: 'pre_' }));   // ['pre_', {}]
 transformFetchOptions({ url: 'test' }));    // ['test', {}]
 transformFetchOptions({ base: 'pre_', url: 'test' }));      // ['pre_test', {}]
 transformFetchOptions({ url: 'test', query: { foo: 'bar' } }));      // ['test?foo=bar', {}]
-transformFetchOptions({ json: true }));     // ['', { json: true, headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' } }]
+
+transformFetchOptions({ url: 'ya', json: true }));
+// ['ya', {
+//   json: true,
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json' } }]
 ```
 
 **transformFetchResult(response)**
