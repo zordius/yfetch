@@ -38,7 +38,7 @@ export const transformFetchResult = ({ fetchArgs, ...response }) => {
 export const transformFetchStatusError = ({ fetchArgs, ...response }) => {
   if (fetchArgs[1].error
       && fetchArgs[1].error.indexOf
-      && fetchArgs[1].error.indexOf(response.status) > 0) {
+      && fetchArgs[1].error.indexOf(response.status) > -1) {
     throw new YfetchError(`Response Code ${response.status} means Error (includes: ${fetchArgs[1].error.join(',')})`);
   }
 
