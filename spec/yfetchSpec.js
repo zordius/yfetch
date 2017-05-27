@@ -95,8 +95,7 @@ describe(`yfetch [${target}.js]`, () => {
       it('should success when opts.error not matched', () => yfetch({ url: MOCK_URLS.OK, error: [404, 500] }));
       it('should threat code 200 as error', () => yfetch({ url: MOCK_URLS.OK, error: [200] }).then(fail, (err) => {
         expect(err.message).toEqual('Response Code 200 means Error (includes: 200)');
-        })
-      );
+      }));
       it('should threat code 200 as error', done => yfetch({ url: MOCK_URLS.OK, error: [100, 200, 300] }).then(fail, (err) => {
         expect(err.message).toEqual('Response Code 200 means Error (includes: 100,200,300)');
         expect(err.response).toEqual({
