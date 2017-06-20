@@ -37,16 +37,16 @@ describe(`yfetch [${target}.js]`, () => {
 
   describe('yfetch()', () => {
     describe('(unit tests)', () => {
-      beforeEach(() => spyOn(yFetch, 'executeFetch').and.returnValue(Promise.resolve()));
+      beforeEach(() => spyOn(global, 'fetch').and.returnValue(Promise.resolve()));
 
-      it('should call executeFetch()', () => {
+      it('should call fetch', () => {
         yfetch();
-        expect(yFetch.executeFetch).toHaveBeenCalled();
+        expect(global.fetch).toHaveBeenCalled();
       });
 
-      it('should handle opts.base + opts.url + opts.query when call executeFetch()', () => {
+      it('should handle opts.base + opts.url + opts.query when call fetch()', () => {
         yfetch({ url: 'ok', base: '/r/', query: { foo: 'bar' } });
-        expect(yFetch.executeFetch).toHaveBeenCalledWith(['/r/ok?foo=bar', { headers: {} }]);
+        expect(global.fetch).toHaveBeenCalledWith('/r/ok?foo=bar', { headers: {} });
       });
     });
 
