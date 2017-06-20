@@ -10,6 +10,7 @@ I like fetch, so here is a set of use cases and example codes to know how to use
 
 **Core Features**:
 * A set of transform functions to help you to deal with fetch request or response.
+* support JSONP at client side.
 * Accept same options just like fetch with some extensions:
   * `opts.base` : base url
   * `opts.query` : will be appended into url automatically
@@ -66,6 +67,25 @@ yfetch({
   ]
 }
 */
+```
+
+**JSONP**
+
+You will need <a href="https://www.npmjs.com/package/fetch-jsonp">fetch-jsonp</a> for JSONP feature. When you set { jsonp: true } in yfetch arguments and fetchJsonp() exists, the request will made by jsonp.
+
+```javascript
+
+import yfetch from 'yfetch';
+
+yfetch({
+  url: 'http://another.host.com/jsonp',
+  jsonp: true,                          // Required for jsonp
+  json: true,                           // for server side none-jsonp calls
+  credentials: 'same-origin',           // for server side none-jsonp calls
+  // Allow fetch-jsonp options https://github.com/camsong/fetch-jsonp
+  jsonpCallback: 'custom_callback_param_name',            // Optional
+  jsonpCallbackFunction: 'custom_callback_function_name', // Optional
+}).then((ret) => console.log(ret.body))
 ```
 
 Why I need yfetch?
