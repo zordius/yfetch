@@ -94,8 +94,7 @@ export const yfetch = (opts = {}) => {
     return response;
   };
 
-  // module.exports.executeFetch allow jasmine to mock it
-  return (global.fetchJsonp && fetchArgs[1].jsonp) ? fetchJsonp(...fetchArgs) : fetch(...fetchArgs)
+  return (global.fetchJsonp && fetchArgs[1].jsonp) ? global.fetchJsonp(...fetchArgs) : fetch(...fetchArgs)
   .then(transformForContext(fetchArgs))
   .then(storeResponse)
   .then(transformFetchResult)
