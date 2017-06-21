@@ -81,7 +81,7 @@ yfetch({
   url: 'http://another.host.com/jsonp',
   jsonp: true,                          // Required for jsonp
   json: true,                           // for server side none-jsonp calls
-  credentials: 'same-origin',           // for server side none-jsonp calls
+  credentials: 'include',               // for server side none-jsonp calls
   // Allow fetch-jsonp options https://github.com/camsong/fetch-jsonp
   jsonpCallback: 'custom_callback_param_name',            // Optional
   jsonpCallbackFunction: 'custom_callback_function_name', // Optional
