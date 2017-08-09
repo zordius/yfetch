@@ -71,7 +71,7 @@ yfetch({
 
 **JSONP**
 
-You will need <a href="https://www.npmjs.com/package/fetch-jsonp">fetch-jsonp</a> for JSONP feature. When you set { jsonp: true } in yfetch arguments and fetchJsonp() exists, the request will made by jsonp.
+You will need <a href="https://www.npmjs.com/package/fetch-jsonp">fetch-jsonp</a> for JSONP feature. When you set { jsonp: true } in yfetch arguments and global.fetchJsonp() exists, the request will made by jsonp.
 
 ```javascript
 
@@ -86,6 +86,16 @@ yfetch({
   jsonpCallback: 'custom_callback_param_name',            // Optional
   jsonpCallbackFunction: 'custom_callback_function_name', // Optional
 }).then((ret) => console.log(ret.body))
+```
+
+To ensure global.fetchJsonp() ready at client side, you can add these:
+
+```javascript
+import fetchJsonp from 'fetch-jsonp'
+
+if (global.window) {
+  global.fetchJsonp =  fetchJsonp
+}
 ```
 
 Why I need yfetch?
