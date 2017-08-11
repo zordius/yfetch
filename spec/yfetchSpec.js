@@ -26,6 +26,10 @@ describe(`yfetch [${target}.js]`, () => {
       expect(transformFetchOptions({ url: 'test', query: { foo: 'bar' } })).toEqual(['test?foo=bar', { headers: {} }]);
     });
 
+    it('should handle opts.query.qoo is undefined', () => {
+      expect(transformFetchOptions({ url: 'test', query: { foo: 'bar', qoo: undefined } })).toEqual(['test?foo=bar', { headers: {} }]);
+    });
+
     it('should hanlde headers when opts.json is true', () => {
       expect(transformFetchOptions({ json: true })).toEqual(['', { json: true, headers: { Accept: 'application/json', 'Content-Type': 'application/json' } }]);
     });

@@ -1,4 +1,4 @@
-import { stringify } from 'querystring';
+import { stringify } from 'query-string';
 import debug from 'debug';
 
 const debugRaw = debug('yfetch:raw');
