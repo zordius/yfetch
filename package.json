@@ -24,8 +24,7 @@
   "homepage": "https://github.com/zordius/yfetch#readme",
   "dependencies": {
     "debug": "^2.6.3",
-    "query-string": "^5.0.0",
-    "querystring": "^0.2.0"
+    "query-string": "^5.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
