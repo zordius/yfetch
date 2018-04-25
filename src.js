@@ -1,6 +1,7 @@
 import { stringify } from 'query-string';
 import debug from 'debug';
 
+const debugStart = debug('yfetch:start');
 const debugRaw = debug('yfetch:raw');
 const debugResult = debug('yfetch:result');
 const debugError = debug('yfetch:error');
@@ -94,6 +95,7 @@ export const yfetch = (opts = {}) => {
     return response;
   };
 
+  debugStart('url: %s - args: %O', fetchArgs[0], fetchArgs[1]);
   return ((global.fetchJsonp && fetchArgs[1].jsonp)
   ? global.fetchJsonp(...fetchArgs)
   : fetch(...fetchArgs))
