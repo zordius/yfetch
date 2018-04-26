@@ -21,6 +21,7 @@ I like fetch, so here is a set of use cases and example codes to know how to use
   * `response.headers` : auto transformed as Object from Header
   * `response.fetchArgs` : the arguments of the fetch call
 * [debug](https://www.npmjs.com/package/debug) , export DEBUG=... to show debug log:
+  * `yfetch:start`: show url and fetch arguments just before the request starts
   * `yfetch:raw` : show url, response size, status, headers, raw
   * `yfetch:result` : show url, response status, body as text or JSON
   * `yfetch:error` : show url, response status, body as text or JSON, error
