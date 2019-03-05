@@ -56,7 +56,7 @@ const transformForContext = fetchArgs => (response = {}) => {
     H[k] = v;
   });
 
-  const job = response.text ? response.text() : Promise.resolve();
+  const job = response.text ? response.text() : (fetchArgs[1].jsonp ? response.json() : Promise.resolve());
 
   return job
   .then((body) => {

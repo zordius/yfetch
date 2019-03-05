@@ -86,7 +86,7 @@ yfetch({
   // Allow fetch-jsonp options https://github.com/camsong/fetch-jsonp
   jsonpCallback: 'custom_callback_param_name',            // Optional
   jsonpCallbackFunction: 'custom_callback_function_name', // Optional
-}).then((ret) => console.log(ret.body))
+}).then((ret) => console.log(ret.body));
 ```
 
 To ensure global.fetchJsonp() ready at client side, you can add these:
@@ -95,7 +95,7 @@ To ensure global.fetchJsonp() ready at client side, you can add these:
 import fetchJsonp from 'fetch-jsonp'
 
 if (global.window) {
-  global.fetchJsonp =  fetchJsonp
+  global.fetchJsonp = fetchJsonp
 }
 ```
 
