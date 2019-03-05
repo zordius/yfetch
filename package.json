@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/zordius/yfetch#readme",
   "dependencies": {
-    "debug": "^2.6.3",
-    "query-string": "^5.0.0"
+    "debug": "^4.1.1",
+    "query-string": "^6.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
