@@ -27,7 +27,14 @@ export const transformFetchOptions = ({ query, headers, base = '', url = '', ...
 // Support opts.json, send debug yfetch:result
 export const transformFetchResult = ({ fetchArgs, ...response }) => {
   if (fetchArgs[1].json) {
-    response.body = JSON.parse(response.body)
+    try {
+      response.body = JSON.parse(response.body)
+      response.parsed = true
+    } catch (E) {
+      if (!fetchArgs[1].ignoreJsonError) {
+        throw new Error(`Can not JSON parse response body: "${response.body}"`)
+      }
+    }
   }
 
   debugResult('url: %s - status: %s - body: %O', response.url, response.status, response.body)

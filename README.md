@@ -16,8 +16,10 @@ I like fetch, so here is a set of use cases and example codes to know how to use
   * `opts.query` : will be appended into url automatically
   * `opts.url` : pass into fetch() as 1st param with processed opts.base and opts.query
   * `opts.json` : auto json headers in request, then json parse the response.body
+  * `opts.ignoreJsonError` : ignore JSON parse error, and the respose.body will be a string
   * `opts.error` : rejects when the response http code be included in opts.error array
   * `response.body` : auto resolved as String or JSON
+  * `response.parsed` : true when opts.json successed
   * `response.headers` : auto transformed as Object from Header
   * `response.fetchArgs` : the arguments of the fetch call
 * [debug](https://www.npmjs.com/package/debug) , export DEBUG=... to show debug log:
