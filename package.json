@@ -1,6 +1,6 @@
 {
   "name": "yfetch",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Yet another fetch. A guide for \"How to make fetch more beautiful?\".",
   "main": "index.js",
   "scripts": {
